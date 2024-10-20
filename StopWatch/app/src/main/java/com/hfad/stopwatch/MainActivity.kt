@@ -100,6 +100,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //    Блок определения поведения работы приложения при переходе на "второй" план, перекрываясь всплывающими перекрывающими активити окнами
+
+    //    Переопределенный метод родительского класса, вызывающися при "переходе" приложения на "второй" план
+
+    override fun onPause()
+    {
+        super.onPause()
+        if (running)
+        {
+            saveOffset()
+            stopwatch.stop()
+        }
+    }
+
+//    Переопределенный метод родительского класса, вызываемый при "возвращении" активности на "первый" план
+
+    override fun onResume() {
+        super.onResume()
+        if (running)
+        {
+            setBaseTime()
+            stopwatch.start()
+            offset = 0
+        }
+    }
+
 
     fun setBaseTime() {
         stopwatch.base = SystemClock.elapsedRealtime() - offset
