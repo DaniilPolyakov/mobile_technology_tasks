@@ -12,11 +12,31 @@ class MainActivity : AppCompatActivity() {
     var running = false
     var offset: Long = 0
 
+//    Секция определения констант объекта Bundle
+
+    val OFFSET_KEY = "offset"
+    val RUNNING_KEY = "running"
+    val BASE_KEY = "base"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         stopwatch = findViewById<Chronometer>(R.id.stopwatch)
+
+//        Задание значений констант при восстановлении активити
+
+        if (savedInstanceState != null)
+        {
+            offset = savedInstanceState.getLong(OFFSET_KEY)
+            running = savedInstanceState.getBoolean(RUNNING_KEY)
+            if (running) {
+                stopwatch.base = savedInstanceState.getLong(BASE_KEY)
+                stopwatch.start()
+            } else setBaseTime()
+        }
+
+
 
 
         val startButton = findViewById<Button>(R.id.start_button)
@@ -45,6 +65,18 @@ class MainActivity : AppCompatActivity() {
             setBaseTime()
         }
     }
+
+
+//    Переопределенный метод родительского класса, используемый для сохранения значений констант состояния активити приложения
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        savedInstanceState.putLong(OFFSET_KEY, offset)
+        savedInstanceState.putBoolean(RUNNING_KEY, running)
+        savedInstanceState.putLong(BASE_KEY, stopwatch.base)
+        super.onSaveInstanceState(savedInstanceState)
+    }
+
+
 
     fun setBaseTime() {
         stopwatch.base = SystemClock.elapsedRealtime() - offset
