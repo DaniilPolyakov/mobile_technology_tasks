@@ -76,6 +76,29 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(savedInstanceState)
     }
 
+    //    Определение поведения приложения при остановке активити приложения (скрытии и повторном открытии)
+    //    Переопределенный метод родительского класса, выполняющийся при остановке активности (видимости) приложения
+
+    override fun onStop() {
+        super.onStop()
+        if (running)
+        {
+            saveOffset()
+            stopwatch.stop()
+        }
+    }
+
+    //    Переопределенный метод родительского класса, выполняющийся при возобновлении активности (видимости) приложения
+
+    override fun onRestart() {
+        super.onRestart()
+        if (running)
+        {
+            setBaseTime()
+            stopwatch.start()
+            offset = 0
+        }
+    }
 
 
     fun setBaseTime() {
