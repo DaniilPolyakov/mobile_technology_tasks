@@ -22,6 +22,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var count: Int = 1
 
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
+    //    Метод для вывода информации о количестве запускаемых корутин
+    //    Выполнение корутин с помощью главного диспетчера
+    suspend fun performTask(tasknumber: Int): Deferred<String> =
+        coroutineScope.async(Dispatchers.Main) {
+            delay(5_000)
+            return@async "Завершен запуск ${tasknumber} корутин"
+        }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -31,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.seekBar.setOnSeekBarChangeListener(object:
             SeekBar.OnSeekBarChangeListener {
 
-//            метод для визуализации количества корутин для запуска в текстовом поле
+    //      метод для визуализации количества корутин для запуска в текстовом поле
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 count = progress
