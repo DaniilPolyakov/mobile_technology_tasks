@@ -32,6 +32,16 @@ class MainActivity : AppCompatActivity() {
             return@async "Завершен запуск ${tasknumber} корутин"
         }
 
+    //    Метод выполняющийся по нажатии кнопки, выполняющий цикл запусков запрошенного числа корутинов
+
+    fun launchCoroutines(view: View) {
+        (1..count).forEach {
+            binding.statusText.text = "Будет запущено Корутин ${it}"
+            coroutineScope.launch(Dispatchers.Main) {
+                binding.statusText.text = performTask(it).await()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
