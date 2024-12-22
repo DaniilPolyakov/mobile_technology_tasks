@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="beer_colors">
+        <item>Light</item>
+        <item>Amber</item>
+        <item>Brown</item>
+        <item>Dark</item>
+
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Beer Adviser</string>
+    <string name="brands">No beer selected</string>
+    <string name="find_beer">Find Beer</string>
+    <style name="Base.Theme.BeerAdvicer" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.BeerAdvicer" parent="Base.Theme.BeerAdvicer"/>
+</resources>

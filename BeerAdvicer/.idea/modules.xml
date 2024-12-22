@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BeerAdvicer.iml" filepath="$PROJECT_DIR$/.idea/modules/BeerAdvicer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeerAdvicer.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeerAdvicer.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeerAdvicer.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeerAdvicer.app.main.iml" />
+    </modules>
+  </component>
+</project>
