@@ -1,3 +1,5 @@
+import android.databinding.tool.writer.ViewBinding
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +8,11 @@ plugins {
 android {
     namespace = "com.hfad.coroutinedemo"
     compileSdk = 34
+
+//    Добавление возможности ViewBinding
+    viewBinding{
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.hfad.coroutinedemo"
